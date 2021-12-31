@@ -91,7 +91,14 @@ class HTMLToTelegramParser(HTMLParser):
                     url = None
             self._open_tags_meta.popleft()
             self._open_tags_meta.appendleft(url)
-        elif tag == 'spoiler':
+        elif (
+            tag == 'sp' or
+            tag == 'spoiler' or
+            (
+                tag == "span" and
+                attrs["class"].strip() == 'tg-spoiler'
+            )
+        ):
             EntityType = MessageEntitySpoiler
 
         if EntityType and tag not in self._building_entities:
