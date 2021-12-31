@@ -27,7 +27,9 @@ class Button:
     together to create a reply markup (replaces the user keyboard).
     You can also configure the aspect of the reply with these.
     The latest message with a reply markup will be the one shown to the user
-    (messages contain the buttons, not the chat itself).
+    (messages contain the buttons, not the chat itself)
+
+    Since, December 7, 2021, you can also create user_profile buttons.
 
     You **cannot** mix the two type of buttons together,
     and it will error if you try to do so.
@@ -54,7 +56,8 @@ class Button:
             types.KeyboardButtonGame,
             types.KeyboardButtonSwitchInline,
             types.KeyboardButtonUrl,
-            types.InputKeyboardButtonUrlAuth
+            types.InputKeyboardButtonUrlAuth,
+            types.InputKeyboardButtonUserProfile
         ))
 
     @staticmethod
@@ -306,3 +309,22 @@ class Button:
         documentation for more information on using games.
         """
         return types.KeyboardButtonGame(text)
+
+    @staticmethod
+    def user_profile(is_inline: bool, text: str, user):
+        """
+        for mentioning users by their ID in (inline) keyboards.
+        
+        This will only work in Telegram versions released after December 7, 2021.
+        
+        Older clients will display unsupported message.
+        """
+        if is_inline:
+            return types.InputKeyboardButtonUserProfile(
+                text,
+                user
+            )
+        return types.KeyboardButtonUserProfile(
+            text,
+            user
+        )
