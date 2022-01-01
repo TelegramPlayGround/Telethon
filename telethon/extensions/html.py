@@ -94,6 +94,7 @@ class HTMLToTelegramParser(HTMLParser):
         elif (
             tag == 'sp' or
             tag == 'spoiler' or
+            tag == 'tg-spoiler' or
             (
                 tag == "span" and
                 attrs["class"].strip() == 'tg-spoiler'
