@@ -143,7 +143,7 @@ class DocsWriter:
 
             # "Opening" modifiers
             if arg.flag:
-                self.write('flags.{}?', arg.flag_index)
+                self.write('{}.{}?', arg.flag, arg.flag_index)
 
             if arg.is_generic:
                 self.write('!')
