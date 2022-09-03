@@ -1478,24 +1478,20 @@ class MessageMethods:
         self: 'TelegramClient',
         entity: 'hints.EntityLike',
         message: 'typing.Optional[hints.MessageIDLike]',
-        reaction_emojie: str = None
+        reaction: 'typing.Optional[typing.Union[types.ReactionCustomEmoji, types.ReactionEmoji, types.ReactionEmpty]]',
+        big: bool = False,
     ):
         message = utils.get_message_id(message) or 0
-        if not reaction_emojie:
-            get_default_request = functions.help.GetAppConfigRequest()
-            app_config = await self(get_default_request)
-            reaction_emojie = (
-                next(
-                    (
-                        y for y in app_config.value
-                        if "reactions_default" in y.key
-                    )
-                )
-            ).value.value
+        if not reaction:
+            get_default_request = functions.help.GetConfigRequest()
+            p_config = await self(get_default_request)
+            reaction = p_config.reactions_default
         request = functions.messages.SendReactionRequest(
+            big=big,
+            add_to_recent=False,
             peer=entity,
             msg_id=message,
-            reaction=reaction_emojie
+            reaction=reaction
         )
         try:
             result = await self(
@@ -1507,14 +1503,14 @@ class MessageMethods:
             for update in result.updates:
                 if isinstance(update, types.UpdateMessageReactions):
                     return update.reactions
-            return reaction_emojie
+            return reaction
 
     async def set_default_reaction(
         self: 'TelegramClient',
-        reaction_emojie: str
+        reaction: 'typing.Optional[typing.Union[types.ReactionCustomEmoji, types.ReactionEmoji, types.ReactionEmpty]]',
     ):
         request = functions.messages.SetDefaultReactionRequest(
-            reaction=reaction_emojie
+            reaction=reaction
         )
         return await self(request)
 
