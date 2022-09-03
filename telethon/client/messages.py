@@ -1478,14 +1478,14 @@ class MessageMethods:
         self: 'TelegramClient',
         entity: 'hints.EntityLike',
         message: 'typing.Optional[hints.MessageIDLike]',
-        reaction: 'typing.Optional[typing.Union[types.ReactionCustomEmoji, types.ReactionEmoji, types.ReactionEmpty]]',
+        reaction: 'typing.Optional[typing.List[typing.Union[types.ReactionCustomEmoji, types.ReactionEmoji, types.ReactionEmpty]]]' = [],
         big: bool = False,
     ):
         message = utils.get_message_id(message) or 0
-        if not reaction:
+        if len(reaction) == 0:
             get_default_request = functions.help.GetConfigRequest()
             p_config = await self(get_default_request)
-            reaction = p_config.reactions_default
+            reaction = [p_config.reactions_default]
         request = functions.messages.SendReactionRequest(
             big=big,
             add_to_recent=False,
@@ -1498,7 +1498,7 @@ class MessageMethods:
                 request
             )
         except ReactionInvalidError:
-            raise "REACTION_INVALID"
+            raise
         else:
             for update in result.updates:
                 if isinstance(update, types.UpdateMessageReactions):
