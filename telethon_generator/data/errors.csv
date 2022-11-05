@@ -66,6 +66,7 @@ CHAT_ABOUT_NOT_MODIFIED,400,About text has not changed
 CHAT_ABOUT_TOO_LONG,400,Chat about too long
 CHAT_ADMIN_INVITE_REQUIRED,403,You do not have the rights to do this
 CHAT_ADMIN_REQUIRED,400,"Chat admin privileges are required to do that in the specified chat (for example, to send a message in a channel which is not yours), or invalid permissions used for the channel or group"
+CHAT_DISCUSSION_UNALLOWED,400,
 CHAT_FORBIDDEN,403,You cannot write in this chat
 CHAT_FORWARDS_RESTRICTED,,
 CHAT_ID_EMPTY,400,The provided chat ID is empty
@@ -226,6 +227,7 @@ NETWORK_MIGRATE_X,303,The source IP address is associated with DC {new_dc}
 NEW_SALT_INVALID,400,The new salt is invalid
 NEW_SETTINGS_INVALID,400,The new settings are invalid
 NEXT_OFFSET_INVALID,400,The value for next_offset is invalid. Check that it has normal characters and is not too long
+NOT_ALLOWED,403,
 OFFSET_INVALID,400,"The given offset was invalid, it must be divisible by 1KB. See https://core.telegram.org/api/files#downloading-files"
 OFFSET_PEER_ID_INVALID,400,The provided offset peer is invalid
 OPTIONS_TOO_MUCH,400,You defined too many options for the poll
@@ -368,6 +370,7 @@ THEME_MIME_INVALID,400,"You cannot create this theme, the mime-type is invalid"
 TMP_PASSWORD_DISABLED,400,The temporary password is disabled
 TMP_PASSWORD_INVALID,400,Password auth needs to be regenerated
 TOKEN_INVALID,400,The provided token is invalid
+TOPIC_DELETED,400,The topic was deleted
 TTL_DAYS_INVALID,400,The provided TTL is invalid
 TTL_MEDIA_INVALID,400,The provided media cannot be used with a TTL
 TTL_PERIOD_INVALID,400,The provided TTL Period is invalid
