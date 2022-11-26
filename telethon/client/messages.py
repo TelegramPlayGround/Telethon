@@ -842,9 +842,10 @@ class MessageMethods:
                     reply_to=reply_to,
                     buttons=markup,
                     formatting_entities=message.entities,
-                    schedule=schedule,
+                    parse_mode=None,  # explicitly disable parse_mode to force using even empty formatting_entities
                     send_as=send_as,
                     noforwards=noforwards
+                    schedule=schedule
                 )
 
             request = functions.messages.SendMessageRequest(
