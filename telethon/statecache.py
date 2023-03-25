@@ -65,7 +65,6 @@ class StateCache:
                 types.UpdateShortSentMessage
             )),
             has_date=frozenset(x.CONSTRUCTOR_ID for x in (
-                types.UpdateUserPhoto,
                 types.UpdateEncryption,
                 types.UpdateEncryptedMessagesRead,
                 types.UpdateChatParticipantAdd,
