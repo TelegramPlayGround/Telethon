@@ -844,7 +844,7 @@ class MessageMethods:
                     formatting_entities=message.entities,
                     parse_mode=None,  # explicitly disable parse_mode to force using even empty formatting_entities
                     send_as=send_as,
-                    noforwards=noforwards
+                    noforwards=noforwards,
                     schedule=schedule
                 )
 
