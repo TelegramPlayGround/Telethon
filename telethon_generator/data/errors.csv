@@ -106,6 +106,7 @@ CHP_CALL_FAIL,500,The statistics cannot be retrieved at this time
 CODE_EMPTY,400,The provided code is empty
 CODE_HASH_INVALID,400,Code hash invalid
 CODE_INVALID,400,Code invalid (i.e. from email)
+COLOR_INVALID,400,Color invalid
 CONNECTION_API_ID_INVALID,400,The provided API id is invalid
 CONNECTION_APP_VERSION_EMPTY,400,App version is empty
 CONNECTION_DEVICE_MODEL_EMPTY,400,Device model empty
@@ -245,10 +246,12 @@ MD5_CHECKSUM_INVALID,400,The MD5 check-sums do not match
 MEDIA_CAPTION_TOO_LONG,400,The caption is too long
 MEDIA_EMPTY,400,The provided media object is invalid or the current account may not be able to send it (such as games as users)
 MEDIA_GROUPED_INVALID,400,You tried to send media of different types in an album
+MEDIA_FILE_INVALID,400,
 MEDIA_INVALID,400,Media invalid
 MEDIA_NEW_INVALID,400,The new media to edit the message with is invalid (such as stickers or voice notes)
 MEDIA_PREV_INVALID,400,The old media cannot be edited with anything else (such as stickers or voice notes)
 MEDIA_TTL_INVALID,400,
+MEDIA_VIDEO_STORY_MISSING,400,
 MEGAGROUP_ID_INVALID,400,The group is invalid
 MEGAGROUP_PREHISTORY_HIDDEN,400,You can't set this discussion group because it's history is hidden
 MEGAGROUP_REQUIRED,400,The request can only be used with a megagroup channel
@@ -268,6 +271,7 @@ MIN_DATE_INVALID,400,The specified minimum date is invalid
 MSGID_DECREASE_RETRY,500,The request should be retried with a lower message ID
 MSG_ID_INVALID,400,The message ID used in the peer was invalid
 MSG_TOO_OLD,400,"[`chat_read_mark_expire_period` seconds](https://core.telegram.org/api/config#chat-read-mark-expire-period) have passed since the message was sent, read receipts were deleted"
+MSG_VOICE_MISSING,400,
 MSG_WAIT_FAILED,400,A waiting call returned an error
 MT_SEND_QUEUE_TOO_LONG,500,
 MULTI_MEDIA_TOO_LONG,400,Too many media files were included in the same album
@@ -359,6 +363,7 @@ QUIZ_CORRECT_ANSWERS_EMPTY,400,A quiz must specify one correct answer
 QUIZ_CORRECT_ANSWERS_TOO_MUCH,400,There can only be one correct answer
 QUIZ_CORRECT_ANSWER_INVALID,400,The correct answer is not an existing answer
 QUIZ_MULTIPLE_INVALID,400,A poll cannot be both multiple choice and quiz
+QUOTE_TEXT_INVALID,400,
 RANDOM_ID_DUPLICATE,500,You provided a random ID that was already used
 RANDOM_ID_EMPTY,400,Random ID empty
 RANDOM_ID_INVALID,400,A provided random ID is invalid
@@ -373,6 +378,7 @@ REPLY_MARKUP_BUY_EMPTY,400,Reply markup for buy button empty
 REPLY_MARKUP_GAME_EMPTY,400,The provided reply markup for the game is empty
 REPLY_MARKUP_INVALID,400,The provided reply markup is invalid
 REPLY_MARKUP_TOO_LONG,400,The data embedded in the reply markup buttons was too much
+REPLY_MESSAGE_ID_INVALID,400,
 RESET_REQUEST_MISSING,400,No password reset is in progress
 RESULTS_TOO_MUCH,400,"You sent too many results, see https://core.telegram.org/bots/api#answerinlinequery for the current limit"
 RESULT_ID_DUPLICATE,400,Duplicated IDs on the sent results. Make sure to use unique IDs
@@ -440,7 +446,9 @@ STICKER_VIDEO_BIG,400,The specified video sticker is too big
 STICKER_VIDEO_NODOC,400,You must send the video sticker as a document
 STICKER_VIDEO_NOWEBM,400,The specified video sticker is not in webm format
 STORAGE_CHECK_FAILED,500,Server storage check failed
+STORAGE_CHOOSE_VOLUME_FAILED,500,
 STORE_INVALID_SCALAR_TYPE,500,
+STORIES_TOO_MUCH,400,
 SWITCH_PM_TEXT_EMPTY,400,The switch_pm.text field was empty
 TAKEOUT_INIT_DELAY_X,420,A wait of {seconds} seconds is required before being able to initiate the takeout
 TAKEOUT_INVALID,400,The takeout session has been invalidated by another data export session
@@ -458,7 +466,9 @@ TMP_PASSWORD_DISABLED,400,The temporary password is disabled
 TMP_PASSWORD_INVALID,400,Password auth needs to be regenerated
 TOKEN_INVALID,400,The provided token is invalid
 TOPIC_DELETED,400,The topic was deleted
+TOPIC_ID_INVALID,400,The topic id is invalid
 TO_LANG_INVALID,400,The specified destination language is invalid
+TRANSCRIPTION_FAILED,400,
 TTL_DAYS_INVALID,400,The provided TTL is invalid
 TTL_MEDIA_INVALID,400,The provided media cannot be used with a TTL
 TTL_PERIOD_INVALID,400,The provided TTL Period is invalid
@@ -523,4 +533,5 @@ WEBPUSH_AUTH_INVALID,400,The specified web push authentication secret is invalid
 WEBPUSH_KEY_INVALID,400,The specified web push elliptic curve Diffie-Hellman public key is invalid
 WEBPUSH_TOKEN_INVALID,400,The specified web push token is invalid
 WORKER_BUSY_TOO_LONG_RETRY,500,Telegram workers are too busy to respond immediately
+WP_ID_GENERATE_FAILED,500,
 YOU_BLOCKED_USER,400,You blocked this user
