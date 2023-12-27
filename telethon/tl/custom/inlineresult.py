@@ -160,7 +160,7 @@ class InlineResult:
             background=background,
             clear_draft=clear_draft,
             hide_via=hide_via,
-            reply_to_msg_id=reply_id,
+            reply_to=reply_id,
             send_as=send_as
         )
         return self._client._get_response_message(

@@ -5,7 +5,7 @@ from ..functions.messages import SaveDraftRequest
 from ..types import DraftMessage
 from ...errors import RPCError
 from ...extensions import markdown
-from ...utils import get_input_peer, get_peer
+from ...utils import get_input_peer, get_peer, get_message_id
 
 
 class Draft:
@@ -21,7 +21,7 @@ class Draft:
         link_preview (`bool`):
             Whether the link preview is enabled or not.
 
-        reply_to_msg_id (`int`):
+        reply_to (`int`):
             The message ID that the draft will reply to.
     """
     def __init__(self, client, entity, draft):
@@ -37,7 +37,7 @@ class Draft:
         self._raw_text = draft.message
         self.date = draft.date
         self.link_preview = not draft.no_webpage
-        self.reply_to_msg_id = draft.reply_to_msg_id
+        self.reply_to = draft.reply_to
 
     @property
     def entity(self):
@@ -126,7 +126,7 @@ class Draft:
             text = self._text
 
         if reply_to == 0:
-            reply_to = self.reply_to_msg_id
+            reply_to = self.reply_to
 
         if link_preview is None:
             link_preview = self.link_preview
@@ -138,7 +138,7 @@ class Draft:
             peer=self._peer,
             message=raw_text,
             no_webpage=not link_preview,
-            reply_to_msg_id=reply_to,
+            reply_to=get_message_id(reply_to),
             entities=entities
         ))
 
@@ -146,7 +146,7 @@ class Draft:
             self._text = text
             self._raw_text = raw_text
             self.link_preview = link_preview
-            self.reply_to_msg_id = reply_to
+            self.reply_to = reply_to
             self.date = datetime.datetime.now(tz=datetime.timezone.utc)
 
         return result
@@ -157,7 +157,7 @@ class Draft:
         wrapper around ``send_message(dialog.input_entity, *args, **kwargs)``.
         """
         await self._client.send_message(
-            self._peer, self.text, reply_to=self.reply_to_msg_id,
+            self._peer, self.text, reply_to=self.reply_to,
             link_preview=self.link_preview, parse_mode=parse_mode,
             clear_draft=clear
         )
@@ -180,7 +180,7 @@ class Draft:
             'entity': entity,
             'date': self.date,
             'link_preview': self.link_preview,
-            'reply_to_msg_id': self.reply_to_msg_id
+            'reply_to': self.reply_to
         }
 
     def __str__(self):

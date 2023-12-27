@@ -602,12 +602,16 @@ def get_message_id(message):
         return None
 
     if isinstance(message, int):
-        return message
+        return types.InputReplyToMessage(
+            reply_to_msg_id=message
+        )
 
     try:
         if message.SUBCLASS_OF_ID == 0x790009e3:
             # hex(crc32(b'Message')) = 0x790009e3
-            return message.id
+            return types.InputReplyToMessage(
+                reply_to_msg_id=message.id
+            )
     except AttributeError:
         pass
 

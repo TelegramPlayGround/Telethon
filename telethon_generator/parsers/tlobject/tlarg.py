@@ -70,7 +70,7 @@ OMITTED_EXAMPLES = {
     'silent',
     'background',
     'clear_draft',
-    'reply_to_msg_id',
+    'reply_to',
     'random_id',
     'reply_markup',
     'entities',
